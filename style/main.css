@@ -48,6 +48,10 @@ body {
   padding: 10px;
   position: relative;
   width: 600px;
+  /* FIX: nếu nội dung dài hơn khoảng trống còn lại, cho phép cuộn bên trong khung
+     thay vì bị overflow:hidden của .container nuốt mất phần dưới */
+  max-height: 65vh;
+  overflow-y: auto;
 }
 
 .text-box p {
@@ -88,6 +92,13 @@ body {
 
 .idea-5 span, .idea-6 span, .wish-hbd span {
   display: inline-block;
+}
+
+/* FIX: display:inline-block trên span khiến trình duyệt tự cắt khoảng trắng
+   ở đầu/cuối nội dung của chính span đó. white-space:pre giữ nguyên
+   khoảng trắng, nên chữ tách theo từng ký tự không còn bị dính liền. */
+.wish-hbd span {
+  white-space: pre;
 }
 
 .idea-6 span{
@@ -255,8 +266,20 @@ body {
     width: 90%;
   }
 
+  /* FIX: cho khung chat cao hơn tương đối trên mobile, và nhích lên gần đỉnh
+     để có nhiều khoảng trống hơn cho nội dung dài trước khi container clip mất */
+  .four {
+    top: 8vh;
+  }
+
   .four .text-box {
     width: 90%;
+    max-height: 78vh;
+  }
+
+  .text-box p {
+    font-size: 0.9rem;
+    line-height: 1.5;
   }
 
   .text-box .fake-btn {
@@ -278,7 +301,7 @@ body {
   }
 
   .wish-hbd {
-    font-size: 2.2em;
+    font-size: 1.8em;
   }
 
   .wish h5 {
