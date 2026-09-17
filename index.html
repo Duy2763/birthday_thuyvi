@@ -71,7 +71,7 @@
         <div class="four">
             <div class="text-box">
                 <div class="msg-scroll">
-                    <h5 class="hbd-chatbox" style="font-size: 1.4rem;">
+                    <p class="hbd-chatbox" style="font-size: 1.4rem;">
                     Chúc mừng sinh nhật emm nhée 💖  
 
                     Thêm một tuổi mới rồi, chúc emm luôn vui vẻ, xinh đẹp và bình an trong lòng.
@@ -81,7 +81,7 @@
                     Mong tuổi mới của emm sẽ dồi dào sức khỏe, tràn ngập niềm vui, thật nhiều may mắn, và từng bước đạt được những mục tiêu lớn mà emm đang hướng tới 🍀🍀🍀
 
                     Chúc emm một ngày sinh nhật thật đặc biệt và ý nghĩa nhée 💕
-                    </h5>
+                    </p>
                 </div>
                 <p class="fake-btn">Gửi</p>
             </div>
@@ -208,13 +208,11 @@
             const textBoxChars = document.getElementsByClassName("hbd-chatbox")[0];
             const hbd = document.getElementsByClassName("wish-hbd")[0];
 
-            textBoxChars.innerHTML = `<span>${textBoxChars.innerHTML
-                .split("")
-                .join("</span><span>")}</span>`;
+             textBoxChars.innerHTML = `<span>${[...textBoxChars.innerHTML]
+        .join("</span><span>")}</span>`;
 
-            hbd.innerHTML = `<span>${hbd.innerHTML
-                .split("")
-                .join("</span><span>")}</span>`;
+    hbd.innerHTML = `<span>${[...hbd.innerHTML]
+        .join("</span><span>")}</span>`;
 
             const ideaTextTrans = {
                 opacity: 0,
