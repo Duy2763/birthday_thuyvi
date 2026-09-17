@@ -48,10 +48,11 @@ body {
   padding: 10px;
   position: relative;
   width: 600px;
-  /* FIX: nếu nội dung dài hơn khoảng trống còn lại, cho phép cuộn bên trong khung
-     thay vì bị overflow:hidden của .container nuốt mất phần dưới */
-  max-height: 65vh;
-  overflow-y: auto;
+  box-sizing: border-box;
+  /* KHÔNG đặt overflow ở đây nữa */
+}
+.msg-scroll {
+  /* rỗng ở desktop, chỉ giới hạn chiều cao khi mobile */
 }
 
 .text-box p {
@@ -92,13 +93,6 @@ body {
 
 .idea-5 span, .idea-6 span, .wish-hbd span {
   display: inline-block;
-}
-
-/* FIX: display:inline-block trên span khiến trình duyệt tự cắt khoảng trắng
-   ở đầu/cuối nội dung của chính span đó. white-space:pre giữ nguyên
-   khoảng trắng, nên chữ tách theo từng ký tự không còn bị dính liền. */
-.wish-hbd span {
-  white-space: pre;
 }
 
 .idea-6 span{
@@ -215,7 +209,7 @@ body {
 }
 
 .wish-hbd {
-  font-size: 3em;
+  font-size: 2em;
   margin: 0;
   text-transform: uppercase;
 }
@@ -266,25 +260,23 @@ body {
     width: 90%;
   }
 
-  /* FIX: cho khung chat cao hơn tương đối trên mobile, và nhích lên gần đỉnh
-     để có nhiều khoảng trống hơn cho nội dung dài trước khi container clip mất */
-  .four {
-    top: 8vh;
-  }
-
   .four .text-box {
     width: 90%;
-    max-height: 78vh;
   }
 
-  .text-box p {
-    font-size: 0.9rem;
-    line-height: 1.5;
+  .msg-scroll {
+    max-height: 55vh;      /* giới hạn chiều cao vùng chữ */
+    overflow-y: auto;      /* cuộn riêng phần chữ, không đụng đến nút Gửi */
+  }
+
+  .hbd-chatbox {
+    font-size: 1rem !important;
+    line-height: 1.4;
   }
 
   .text-box .fake-btn {
-    bottom: -38px;
-    right: 5px;
+    bottom: -46px;
+    right: -2px;
   }
 
   .idea-5 span {
